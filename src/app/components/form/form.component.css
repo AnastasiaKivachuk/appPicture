@@ -1,0 +1,18 @@
+.mainBlock{
+  border: 1px black solid;
+  border-radius: 20px;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5%;
+  background: #E6E6FA;
+  padding: 5% 0;
+  display: flex;
+  justify-content: center;
+}
+.wrap{
+  width: 200px;
+}
+button{
+  height: auto;
+}

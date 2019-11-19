@@ -1,35 +1,15 @@
-
-
-<p>blur:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>brightness:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>contrast:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>grayscale:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>invert:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>opacity:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>saturate:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<p>sepia:
-  <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3">
-</p>
-
-<button (click)="openForm()">Load new image</button>
+<div class="mainBlock">
+  <div class="filters">
+  <div *ngFor="let method of this.arrMethods; let i=index">
+    <p>{{method}}: {{getValue(i)}} {{getSign(i)}}</p>
+    <input type="range" min={{getMin(i)}} max={{getMax(i)}} value={{getValue(i)}} step={{getStep(i)}} (input)="takeEventTarget($event, i)">
+  </div>
+  </div>
+  <div class="pic">
+    <div class="button" (click)="openForm()">Load new image</div>
+    <br>
+    <canvas></canvas>
+<!--    <img scr={{}}>-->
+    <div class="block" [ngStyle]="{'filter': changeStyle()}"></div>
+  </div>
+</div>

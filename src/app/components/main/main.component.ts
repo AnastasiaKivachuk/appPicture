@@ -9,7 +9,7 @@ import {ServiceService} from '../../service/service.service';
 export class MainComponent implements OnInit {
   public obj: {} = {
     blur: {min: 0, max: 10, value: 0, sign: 'px', step: 1},
-    brightness: {min: 0, max: 1, value: 0, sign: '', step: 0.1},
+    brightness: {min: 0, max: 1, value: 1, sign: '', step: 0.1},
     contrast: {min: 0, max: 200, value: 100, sign: '%', step: 1},
     grayscale: {min: 0, max: 100, value: 0, sign: '%', step: 1},
     invert: {min: 0, max: 100, value: 0, sign: '%', step: 1},
@@ -23,23 +23,16 @@ export class MainComponent implements OnInit {
   public result: string;
 
   constructor(public service: ServiceService) {
-    // console.log(1);
-    // console.log(service.data);
-
-
   }
 
   ngOnInit() {
-    this.result = this.service.getData();
-    console.log('qqqqqqqqqqqqqqqqqqq');
-    console.log( this.result);
-    // this.service.getData();
     this.arrMethods = Object.keys(this.obj);
     Object.keys(this.obj).forEach((key) => {
       this.arrObj.push(this.obj[key]);
     });
 
-    // this.changeStyle();
+
+    this.result = this.service.getData();
   }
 
   openForm() {
@@ -108,8 +101,5 @@ export class MainComponent implements OnInit {
     this.str = Object.keys(this.obj).map((key) => `${key}(${this.obj[key].value}${this.obj[key].sign})`).join(' ');
     console.log(this.str);
     return this.str;
-
   }
-
-
 }

@@ -8,8 +8,8 @@
   <div class="pic">
     <div class="button" (click)="openForm()">Load new image</div>
     <br>
-    <canvas></canvas>
-<!--    <img scr={{}}>-->
-    <div class="block" [ngStyle]="{'filter': changeStyle()}"></div>
+    <img [src]="result" [ngStyle]="{'filter': changeStyle()}"/>
   </div>
 </div>
+
+

@@ -6,12 +6,10 @@ import {EventEmitter} from '@angular/core';
   providedIn: 'root'
 })
 export class ServiceService {
-public data: string;
+  public data: string;
   constructor(public router: Router) { }
 
   setData(value) {
-    console.log('wwwwww');
-    console.log(value);
     this.data = value;
   }
 
@@ -25,10 +23,4 @@ public data: string;
   openMain() {
     this.router.navigate([`/main`]);
   }
-
-  // myMethod(data) {
-  //   console.log(111);
-  //   console.log(data);
-  //   // this.myMethodSubject.next(data);
-  // }
 }

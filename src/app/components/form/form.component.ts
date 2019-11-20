@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {ServiceService} from '../../service/service.service';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -19,23 +18,15 @@ export class FormComponent {
 
   submit() {
     console.log(this.someInput.nativeElement.files[0]);
-    this.service.openMain();
+
     this.file = this.someInput.nativeElement.files[0];
     this.reader = new FileReader();
     this.reader.readAsDataURL(this.file);
     this.reader.onload = () => {
       this.base64 = this.reader.result;
-      console.log(this.reader.result);
+      this.service.setData(this.base64);
+      this.service.openMain();
     };
-    this.service.setData(this.base64);
+
   }
-
-  // moveInfoToService(){
-  //   return this.base64;
-  // }
-  // // addItem(name: string){
-  // //   this.dataService.addData(name);
-  // // }
-
-
 }

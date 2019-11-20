@@ -1,9 +1,10 @@
 <div class="mainBlock">
   <div class="filters">
-  <div *ngFor="let method of this.arrMethods; let i=index">
-    <p>{{method}}: {{getValue(i)}} {{getSign(i)}}</p>
-    <input type="range" min={{getMin(i)}} max={{getMax(i)}} value={{getValue(i)}} step={{getStep(i)}} (input)="takeEventTarget($event, i)">
-  </div>
+    <div *ngFor="let key  of objectKeys(obj)">
+      <p>{{key}}: {{obj[key]['value']}}{{obj[key]['sign']}}</p>
+      <input type="range" min="{{(obj[key])['min']}}" max="{{obj[key]['max']}}" value="{{obj[key]['value']}}" step="{{obj[key]['step']}}" (input)="takeEventTarget($event, key)">
+
+    </div>
   </div>
   <div class="pic">
     <div class="button" (click)="openForm()">Load new image</div>
@@ -11,5 +12,3 @@
     <img [src]="result" [ngStyle]="{'filter': changeStyle()}"/>
   </div>
 </div>
-
-

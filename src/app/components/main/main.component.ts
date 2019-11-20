@@ -7,7 +7,9 @@ import {ServiceService} from '../../service/service.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  public obj: {} = {
+  public obj: {
+    blur: {}, brightness: {}, contrast: {}, grayscale: {}, invert: {}, opacity: {}, saturate: {}, sepia: {}
+  } = {
     blur: {min: 0, max: 10, value: 0, sign: 'px', step: 1},
     brightness: {min: 0, max: 1, value: 1, sign: '', step: 0.1},
     contrast: {min: 0, max: 200, value: 100, sign: '%', step: 1},
@@ -21,6 +23,7 @@ export class MainComponent implements OnInit {
   public arrObj: {}[] = [];
   public str = '';
   public result: string;
+  public objectKeys = Object.keys;
 
   constructor(public service: ServiceService) {
   }
@@ -39,67 +42,14 @@ export class MainComponent implements OnInit {
     this.service.openForm();
   }
 
-  getValue(i) {
-    let res;
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'value') {
-        res = this.arrObj[i][key];
-      }
-    });
-    return res;
-  }
 
-  getMin(i) {
-    let res;
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'min') {
-        res = this.arrObj[i][key];
-      }
-    });
-    return res;
-  }
+  takeEventTarget(event, key) {
+    this.obj[key].value = event.target.value;
 
-  getMax(i) {
-    let res;
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'max') {
-        res = this.arrObj[i][key];
-      }
-    });
-    return res;
-  }
-
-  getStep(i) {
-    let res;
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'step') {
-        res = this.arrObj[i][key];
-      }
-    });
-    return res;
-  }
-
-  getSign(i) {
-    let res;
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'sign') {
-        res = this.arrObj[i][key];
-      }
-    });
-    return res;
-  }
-
-  takeEventTarget(event, i) {
-    Object.keys(this.arrObj[i]).forEach((key) => {
-      if (key === 'value') {
-        this.arrObj[i][key] = event.target.value;
-      }
-    });
   }
 
   changeStyle() {
     this.str = Object.keys(this.obj).map((key) => `${key}(${this.obj[key].value}${this.obj[key].sign})`).join(' ');
-    console.log(this.str);
     return this.str;
   }
 }

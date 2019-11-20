@@ -19,8 +19,6 @@ export class MainComponent implements OnInit {
     saturate: {min: 0, max: 200, value: 100, sign: '%', step: 1},
     sepia: {min: 0, max: 100, value: 0, sign: '%', step: 1}
   };
-  public arrMethods: string[] = [];
-  public arrObj: {}[] = [];
   public str = '';
   public result: string;
   public objectKeys = Object.keys;
@@ -29,12 +27,6 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.arrMethods = Object.keys(this.obj);
-    Object.keys(this.obj).forEach((key) => {
-      this.arrObj.push(this.obj[key]);
-    });
-
-
     this.result = this.service.getData();
   }
 

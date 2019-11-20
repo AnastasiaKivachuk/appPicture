@@ -17,8 +17,6 @@ export class FormComponent {
   }
 
   submit() {
-    console.log(this.someInput.nativeElement.files[0]);
-
     this.file = this.someInput.nativeElement.files[0];
     this.reader = new FileReader();
     this.reader.readAsDataURL(this.file);

@@ -14,7 +14,7 @@ export class FormComponent {
   private base64: string;
 
   constructor(public service: ServiceService) {
-    service.data = this.base64;
+
   }
 
   submit() {
@@ -27,6 +27,7 @@ export class FormComponent {
       this.base64 = this.reader.result;
       console.log(this.reader.result);
     };
+    this.service.setData(this.base64);
   }
 
   // moveInfoToService(){

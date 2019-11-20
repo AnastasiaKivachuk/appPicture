@@ -23,13 +23,17 @@ export class MainComponent implements OnInit {
   public result: string;
 
   constructor(public service: ServiceService) {
-    console.log(1);
-    console.log(service.data);
+    // console.log(1);
+    // console.log(service.data);
+
+
   }
 
   ngOnInit() {
-
-
+    this.result = this.service.getData();
+    console.log('qqqqqqqqqqqqqqqqqqq');
+    console.log( this.result);
+    // this.service.getData();
     this.arrMethods = Object.keys(this.obj);
     Object.keys(this.obj).forEach((key) => {
       this.arrObj.push(this.obj[key]);

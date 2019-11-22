@@ -8,7 +8,16 @@
   </div>
   <div class="pic">
     <div class="button" (click)="openForm()">Load new image</div>
+
     <br>
     <img [src]="result" [ngStyle]="{'filter': changeStyle()}"/>
+    <div class="button" (click)="makeLikeImg(5)">Default</div>
   </div>
+</div>
+<div class="mainBlock">
+  <img class="littleImg1" [src]="result" (click)="makeLikeImg(1)"/>
+  <img class="littleImg2" [src]="result" (click)="makeLikeImg(2)"/>
+  <img class="littleImg3" [src]="result" (click)="makeLikeImg(3)"/>
+  <img class="littleImg4" [src]="result" (click)="makeLikeImg(4)"/>
+
 </div>

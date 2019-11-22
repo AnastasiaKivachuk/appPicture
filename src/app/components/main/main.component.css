@@ -45,4 +45,23 @@ img{
   height: auto;
 }
 
-
+.littleImg1{
+  filter: blur(0px) brightness(0.7) contrast(40%) grayscale(20%) invert(20%) opacity(100%) saturate(40%) sepia(20%);
+  width:20%;
+  height: auto;
+}
+.littleImg2{
+  filter: blur(1px) brightness(0.7) contrast(80%) grayscale(40%) invert(40%) opacity(100%) saturate(80%) sepia(40%);
+  width:20%;
+  height: auto;
+}
+.littleImg3{
+  filter: blur(2px) brightness(0.7) contrast(120%) grayscale(60%) invert(60%) opacity(100%) saturate(120%) sepia(60%);
+  width:20%;
+  height: auto;
+}
+.littleImg4{
+  filter: blur(3px) brightness(0.7) contrast(160%) grayscale(40%) invert(80%) opacity(100%) saturate(160%) sepia(80%);
+  width:20%;
+  height: auto;
+}

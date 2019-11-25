@@ -7,6 +7,9 @@ import { FormComponent } from './components/form/form.component';
 import { MainComponent } from './components/main/main.component';
 import { ServiceService } from './service/service.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './store/reducers/base64.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      base64: reducer
+    }),
+    StoreDevtoolsModule.instrument({maxAge: 5}),
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

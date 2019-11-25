@@ -1,6 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ServiceService} from '../../service/service.service';
 import {ObjClass} from '../../service/objClass';
+import {Obj} from '../../service/objClass';
+
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Base64} from '../../models/base64.model';
+import { AppState} from '../../store/app.state';
+import * as Base64Action from '../../store/action/base62.action';
+import {getString} from '../../store/selector/base64.selector';
 
 @Component({
   selector: 'app-main',
@@ -8,11 +16,7 @@ import {ObjClass} from '../../service/objClass';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  public obj: {
-    blur: ObjClass, brightness: ObjClass, contrast: ObjClass,
-    grayscale: ObjClass, invert: ObjClass, opacity: ObjClass,
-    saturate: ObjClass, sepia: ObjClass
-  } = {
+  public obj: Obj = {
     blur: {min: 0, max: 10, value: 0, sign: 'px', step: 1},
     brightness: {min: 0, max: 1, value: 1, sign: '', step: 0.1},
     contrast: {min: 0, max: 200, value: 100, sign: '%', step: 1},
@@ -23,14 +27,17 @@ export class MainComponent implements OnInit {
     sepia: {min: 0, max: 100, value: 0, sign: '%', step: 1}
   };
   public str = '';
-  public result: string;
+  private base64: Observable<string>;
+  // public result: string;
   public objectKeys = Object.keys;
 
-  constructor(public service: ServiceService) {
+  constructor(public service: ServiceService,
+              private store: Store<AppState>) {
+    this.base64 =  store.select( getString);
+
   }
 
   ngOnInit() {
-    this.result = this.service.getData();
   }
 
   changeObjValue(arr) {
@@ -65,6 +72,7 @@ export class MainComponent implements OnInit {
   }
 
   openForm() {
+    this.store.dispatch(new Base64Action.AddString(''));
     this.service.openForm();
   }
 

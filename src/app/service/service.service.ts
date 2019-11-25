@@ -6,16 +6,16 @@ import {EventEmitter} from '@angular/core';
   providedIn: 'root'
 })
 export class ServiceService {
-  public data: string;
+  // public data: string;
   constructor(public router: Router) { }
 
-  setData(value) {
-    this.data = value;
-  }
-
-  getData() {
-    return this.data;
-  }
+  // setData(value) {
+  //   this.data = value;
+  // }
+  //
+  // getData() {
+  //   return this.data;
+  // }
 
   openForm() {
     this.router.navigate([`/form`]);
